@@ -1,0 +1,7 @@
+interface:
+  display_name: "Literature Deep Reader"
+  short_description: "Deep paper reading and research notes"
+  default_prompt: "Use $literature-deep-reader to read this paper, explain the research gap, scientific question, method, evidence chain, and ask which sections to save as notes."
+
+policy:
+  allow_implicit_invocation: true
