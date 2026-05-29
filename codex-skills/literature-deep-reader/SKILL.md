@@ -10,6 +10,10 @@ Use this skill to read one paper deeply, then optionally preserve the useful par
 ## Operating Rules
 
 - Do not invent facts, citations, datasets, equations, metrics, or paper claims. Mark missing information as `unknown` or `needs source check`.
+- Default to source-only reading. Use only the paper PDF, its supplementary files, user-provided notes, and explicitly linked author materials unless the user asks for external context.
+- Every substantive conclusion must carry a source anchor: page number, section name, figure/table number, equation, or a short paraphrase of the relevant passage.
+- If a statement is an interpretation rather than something directly supported by the paper, label it as `interpretation`.
+- If the source does not support a statement strongly enough, label it as `uncertain` or `needs source check` instead of smoothing over the gap.
 - Distinguish what the paper explicitly claims from your interpretation of its contribution.
 - Prefer source-grounded reading: PDF text, abstract, figures, tables, author-provided code, project page, DOI/arXiv metadata, Zotero notes, or user-provided excerpts.
 - If only metadata or abstract is available, keep conclusions narrow and say which parts require the full PDF.
@@ -23,9 +27,10 @@ Use this skill to read one paper deeply, then optionally preserve the useful par
    - Title/DOI/arXiv only: look up metadata or ask for the PDF if the source is unavailable.
    - Multiple sources: link them as one paper entity and prefer the full paper over secondary summaries.
 2. Build a paper map before explaining.
-   - Bibliographic identity: title, authors, venue/year, DOI/arXiv if available.
-   - Problem setting: domain, object of study, assumptions, intended audience.
-   - Section map: introduction, related work, method, experiments/results, discussion/limitations.
+   - Bibliographic identity: title, authors, venue/year, DOI/arXiv if available, with page/source anchor.
+   - Translate the title, author list, author affiliations, and conclusion into the user's language when they are present in the source.
+   - Problem setting: domain, object of study, assumptions, intended audience, with section/page anchor.
+   - Section map: introduction, related work, method, experiments/results, discussion/limitations, with page ranges when available.
 3. Explain the research logic in this order:
    - Background: what field situation makes the paper necessary.
    - Research gap: what is missing, unresolved, impractical, under-tested, or poorly explained in prior work.
@@ -33,9 +38,12 @@ Use this skill to read one paper deeply, then optionally preserve the useful par
    - Proposed answer: the paper's core thesis or mechanism.
    - Method/evidence: what method, dataset, experiment, theory, simulation, proof, ablation, case study, or qualitative analysis supports the thesis.
    - Conclusion boundary: what the evidence does and does not prove.
+   - Conclusion translation: translate the paper's conclusion or concluding paragraph when present; if the paper has no explicit conclusion section, translate the closest final synthesis paragraph and label the source.
+   Add a source anchor to each bullet or mark it as `interpretation`.
 4. Reconstruct the method as a pipeline when relevant.
    - Inputs, outputs, modules, state, variables, algorithms, prompts/tools/retrieval/training/inference steps, evaluation, and failure handling.
    - Include pseudocode or a minimal implementation sketch only if it helps the user understand or reproduce the work.
+   Label inferred pipeline steps as `interpretation` when the paper does not explicitly describe them.
 5. End with a compact section checklist and ask what to save.
    - Present candidate note sections: `paper-card`, `research-gap`, `scientific-question`, `method-pipeline`, `evidence-chain`, `claims-and-limits`, `reproduction-notes`, `review-positioning`.
    - Ask whether to save all sections or only selected sections.
@@ -48,11 +56,13 @@ For each important claim, use this structure:
 ### Claim
 <one sentence>
 
+- Source anchor: <page / section / figure / table / equation / passage paraphrase>
 - Paper evidence: <experiment/result/table/figure/quote/paraphrase/source location>
 - Method used: <empirical/theoretical/simulation/benchmark/ablation/case study/review>
 - What it supports: <exact conclusion supported>
 - What it does not prove: <boundary or missing evidence>
 - Confidence: high | medium | low | needs source check
+- Status: directly supported | interpretation | uncertain
 ```
 
 ## Note Creation
