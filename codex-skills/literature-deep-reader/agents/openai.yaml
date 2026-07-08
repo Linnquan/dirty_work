@@ -1,5 +1,5 @@
 interface:
-  display_name: "Literature Deep Reader"
+  display_name: "文献深度精读"
   short_description: "Deep paper reading and research notes"
   default_prompt: "Use $literature-deep-reader to read this paper, explain the research gap, scientific question, method, evidence chain, and ask which sections to save as notes."
 
