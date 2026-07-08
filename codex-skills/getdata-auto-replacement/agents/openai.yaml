@@ -1,4 +1,4 @@
 interface:
-  display_name: "图表数据提取"
+  display_name: "图表数据提取(lyq)"
   short_description: "从图像曲线或散点提取可复制到 Excel 的表格数据"
   default_prompt: "使用 $getdata-auto-replacement 从图像中提取曲线或点位数据，并输出可复制到 Excel 的表格。"
